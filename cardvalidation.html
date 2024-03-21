@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card validation</title>
+    <style>
+        #main {
+            text-align: center;
+            margin-top: 4%;
+            border: 5px solid black;
+            margin-left: 40%;
+            margin-right: 40%;
+            padding-bottom: 2%;
+            background-color: aqua;
+        }
+        label, select, input, button {
+            margin-bottom: 20px;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h2>Card validation System</h2>
+            <label>Choose a Card:</label>
+            <select id="card">
+                <option>Master Card</option>
+                <option>Visa</option>
+                <option>American Express</option>
+            </select>
+            <br>
+            <label>Enter Card Number</label>
+            <br>
+            <br>
+            <input type="text" id="number">
+            <br>
+            <button onclick="fun()">Check</button>
+    </div>
+    <script>
+        function fun() {
+            var a = document.getElementById("card").value;
+            var b = document.getElementById("number").value;
+            if(a == "Master Card"){
+                var l = b.length;
+                if(l != 16){
+                    alert("Invalid Card Number");
+                }
+                else{
+                    var i = parseInt(b.charAt(l - 1));
+                    var j = parseInt(b.charAt(l - 2));
+                    var num = j * 10 + i;
+                    if(num >= 51 && num <= 55){
+                        alert("Valid Card Number");
+                    }
+                    else {
+                        alert("Invalid Card Number");
+                    }
+                }
+            }
+            else if(a == "Visa"){
+                var l = b.length;
+                if(l != 16 && l != 13){
+                    alert("Invalid Card Number");
+                }
+                else{
+                    var i = parseInt(b.charAt(l - 1));
+                    if(i == 4){
+                        alert("Valid Card Number");
+                    }
+                    else {
+                        alert("Invalid Card Number");
+                    }
+                }
+            }
+            else{
+                var l = b.length;
+                if(l != 15){
+                    alert("Invalid Card Number");
+                }
+                else{
+                    var i = parseInt(b.charAt(l - 1));
+                    var j = parseInt(b.charAt(l - 2));
+                    var num = j * 10 + i;
+                    if(num == 37 || num == 34){
+                        alert("Valid Card Number");
+                    }
+                    else {
+                        alert("Invalid Card Number");
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

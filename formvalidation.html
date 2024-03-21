@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <script>
+        function validate(){
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var pass = document.getElementById("pass").value;
+            var conpass = document.getElementById("conpass").value;
+            var nameRegex = /^[A-Za-z]{6,}$/; 
+            var passRegex = /^.{6,}$/
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+            if (name === "" || !name.match(nameRegex)) {
+                alert("Name should contain alphabets and the length should not be less than 6 characters.");
+                return false;
+            }
+            if (pass === "" || !pass.match(passRegex)) {
+                alert("Password should not be less than 6 characters.");
+                return false;
+            }
+            if (!email.match(emailRegex)) {
+                alert("Invalid email address.");
+                return false;
+            }
+            if (conpass === "" || conpass !== pass) {
+                alert("Confirm password should match password.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validate()">
+         <fieldset>
+            <label>Name</label>
+            <input type="text" id="name"><br>
+            <label>Email</label>
+            <input type="text"  id="email"><br>
+            <label>Password</label>
+            <input type="password"  id="pass"><br>
+            <label>Confirm Password</label>
+            <input type="password" id="conpass"><br>
+            <button type="submit">Submit</button>
+         </fieldset>
+    </form>
+</body>
+</html>
